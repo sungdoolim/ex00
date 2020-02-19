@@ -1,0 +1,181 @@
+설정 :
+jdk : 1.8 - pom.xml에서 강제설정
+\\192.168.0.200
+
+처음 이클립스로 설치할때
+ market -> sts -> spring tools 3 설치 -> 다 체크 후 confirm
+epp221.exe=> 메모장 같은 개발툴 
+평가하기 -> 확인? -> 문서=-> 영구 설정 -> 글꼴=consolas / 파일 -> 저장시 백업 파일 생성 체크 헤제-> 백업 디렉토리에 원격~~생성 체크해제
+
+이클립스에    spring legach project 만들꺼임
+
+오라클 :C:\oraclexe\app\oracle\product 11.2.0에 있음
+oracle_program에 있는 거 설치하면 되는 것임!!!
+
+오라클 접속 사용자 만들기 :
+[Oracle 11g] 오라클 유저 system, sys 암호 변경
+
+C:\>sqlplus "/as sysdba"
+
+
+SQL*Plus: Release 11.1.0.6.0 - Production on 토 12월 4 22:24:13 2010
+
+Copyright (c) 1982, 2007, Oracle.  All rights reserved.
+
+다음에 접속됨:
+Oracle Database 11g Enterprise Edition Release 11.1.0.6.0 - Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> SHOW USER
+USER은 "SYS"입니다
+SQL> ALTER USER SYS IDENTIFIED BY 원하는 암호; --굳이 할 필요 없다.
+
+사용자가 변경되었습니다.
+
+SQL> ALTER USER SYSTEM IDENTIFIED BY 원하는 암호;
+
+사용자가 변경되었습니다.
+
+SQL> SELECT USERNAME, PASSWORD FROM DBA_USERS; --굳이 할 필요 없다.
+
+
+집에 있는 sqlplus실행 하려면... : sorce/newfolder / sqlplus/ sqlplus.exe
+
+
+실 db저장 장소 C:\oraclexe\app\oracle\oradata\XE
+
+임의의 db저장소 만들기 이름=day
+ create tablespace day
+  2  datafile 'C:\oraclexe\app\oracle\oradata\XE\day.dbf' size 200m;
+Tablespace created.
+
+ create user day
+  2  identified by day
+  3  default tablespace day
+  4  quota unlimited on day;
+
+User created.
+
+SQL> grant connect,resource to day;
+
+Grant succeeded.
+
+SQL> conn day/day
+Connected.
+SQL> show user
+USER is "DAY"
+SQL>
+
+
+ 이클립스->openperspective->databaseconnection ->new ->oracle->next->
+new drive definition -> systemversion 11->jarlist->ojdbc14.jar -> 
+editjarjip ->ojdbc67.jar찾아추가 -> 
+username,password입력 ,sid에 xe입력 , host에 127.0.0.1 입력 (server라고 일단 적혀 있음) , save password체크 
+
+
+
+올려준pom다운 받고...얘가 프레임웤
+
+
+톰캣 설치 :
+tomcat9클릭 ->core의 zip클릭 -> 워크스페이스에 압축풀기 -> 그후 이클립스 
+->openperspective -> spring -> server에 뭐시기 클릭 -> 아파치 -> 톰캣 9 -> 워크스페이스 브라우즈 -> finish
+
+포트번호 바꿔야함 :
+아파치 :8051
+8052 
+
+잠깐 글꼴 바꾸기
+window->preference ->general->appearance->color fonts ->basic ->text font ->edit ->
+ 그리고  workspace 텝->other->utf-8
+그리고 xml->xmlfile->systax coloring -> foregroudn 클릭 -> 색상 파란색, bold ->...
+ 그냥 기타 설정이었음..
+
+서버구동 완료
+
+file->new->spring legacy project-> 이름짓고->template의 spring mvc project선택 -> next->페키지 명을 넣어야함 : org.zerock.controller써넣기->finish
+프로젝트 생성 끝
+
+파일 탐색기-> 사용자 -> 에가면 .m2폴더가 생성됨->repository가 있을것
+만약 설치가 잘 안됬으면 repository지우고 이클립스 시작하면 되는것 -----
+
+현 웹 주소 http://localhost:8052/controller/
+패키지 명의 끝이 노출
+
+</version>과 <property>사이에
+
+
+	<repositories>
+		<repository>
+		 <id>oracle</id>
+		 <url>http://maven.jahia.org/maven2</url>
+		</repository>
+	   </repositories>
+이거 추가!!!!
+
+그후
+커넥션 풀을 위한 라이브러리~~~끝 앞 까지 복사40~116줄
+폼 30줄에 붙여넣기
+
+204~209 복사 -> 197에 붙이기
+
+저장 -> 폴더 ->메이븐 ->업데이트!
+
+run as server -> hell world나오면 성공
+--------------------------------------------------------------------------
+
+
+
+jdk1.8로 바꼈는지 확인 :
+file -> property -> javaCompiler :확인가능
+		 -> project facets : java 1.8인지 확인가능
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

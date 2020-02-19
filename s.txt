@@ -130,15 +130,41 @@ jdk1.8로 바꼈는지 확인 :
 file -> property -> javaCompiler :확인가능
 		 -> project facets : java 1.8인지 확인가능
 
+가. src/main/java : 패키지 이하 원본 자바파일/ vo,dao
+나. src/main/resources : mybatis 관련 xml파일 경로(db)
+다. src/test/java : 자바 테스트 경로
+라. src/main/webapp/resources : html,css,javascript,jQuery,이미지 등 리소스 자원
+경로
+마. src/main/webapp/WEB-INF/spring : 스프링 관련 중요 설정파일
+바. pom.xml : 메이븐 설정 파일
+
+
+org.zerock.controller 패키지를 작성했다면 중간 경로가
+ /controller이 된다. 최초 실행 경로는 브라우저에서
+http://localhost:8081/controller가 된다.
+
+
+junit test파일 만들기:
+src/test/java밑에 org.~controller에ㅐ서 new ->class만들기
+
+실행할때 run as junit test
 
 
 
+mybatis :
+xml 을 사용하여 sql문을 적용
 
 
+namespace추가 
+src->main->webapp->web-INF->spring->root-context.xml:
+bean추가 하는 곳
+여기서 밑의 namespace텝 누르기 -> aop,beabs,context,jdbc,mybatis,tx - 6개체크
+->source텝 가면 추가되어있음
 
+빈즈 안에 빈 태그 추가!
+20 ~ 28
 
-
-
+src/test/java/~controller ->new class ->
 
 
 

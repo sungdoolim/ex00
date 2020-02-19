@@ -13,9 +13,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-	
-	
+	<!-- Root Context: defines shared resources visible to all other web components -->	
 	<!-- spring jdbc -->
 	<bean id="dataSource"
 	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -24,13 +22,20 @@
 		<property name="url"
 		value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
 		<property name="username" value="day"/>
-		<property name="password" value="day"/>
-	</bean>
-	
-	
-	
-	
+		<property name="password" value="day"/>	
+	</bean>	
+		<!-- myvatis 와 spring연결 설정 작업 mybatis 환경 설정-->
 		
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<!-- setter()메서드를 통한 의돈성 주입 DI -->
+		<!-- mybatis 환경 설정 태그 경로 설정 -->
+		<property name="configLocation"
+		value="classpath:/mybatis-config.xml"/>
+		<!-- classpath 경로 : src/main/resources
+		mybatis-config.xml은 데이터 저장 빈 클래스 객체명을 별칭으로 관리 -->
+	</bean>
 </beans>
 
 

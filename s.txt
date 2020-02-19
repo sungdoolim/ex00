@@ -155,6 +155,7 @@ mybatis :
 xml 을 사용하여 sql문을 적용
 
 
+
 namespace추가 
 src->main->webapp->web-INF->spring->root-context.xml:
 bean추가 하는 곳
@@ -163,12 +164,15 @@ bean추가 하는 곳
 
 빈즈 안에 빈 태그 추가!
 20 ~ 28
-
-src/test/java/~controller ->new class ->
-
-
+30~39 : mybatis
+src/main/resources밑에 mybatis-config.xml만들기
 
 
+의존성 주입..?
+servlet-context.xml : front 단
+
+
+--------------------------------------------------------------------------
 
 
 

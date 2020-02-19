@@ -6,7 +6,8 @@ import java.sql.DriverManager;
 import org.junit.Test;
 
 public class OracleConTest {
-
+//servlet에서 했던거네..?
+	
 	private static final String DRIVER=
 			"oracle.jdbc.OracleDriver";
 	//oracle.jdbc는 패키지명,oracledriver 는 오라클jdbc클래스명

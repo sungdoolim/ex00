@@ -22,10 +22,13 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<!--  25:web-inf경로로 들어가면 해당 jsp파일이 웹 브라우저엥 직접 실행 하수 없다 - 보안-->
+
+		
 	</beans:bean>
 	
 	<context:component-scan base-package="org.zerock.controller" />
-	
+	<!--base-package속성에 설정된 패키지 경로를 스프링에 자동 등록한다. 이 패키지 하위의 스프링 컨트롤러 클래스를 오토스캔 해서 인식하게 해준다-->
 	
 	
 </beans:beans>

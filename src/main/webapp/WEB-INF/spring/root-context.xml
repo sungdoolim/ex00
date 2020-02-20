@@ -35,7 +35,14 @@
 		value="classpath:/mybatis-config.xml"/>
 		<!-- classpath 경로 : src/main/resources
 		mybatis-config.xml은 데이터 저장 빈 클래스 객체명을 별칭으로 관리 -->
+
+<!-- 쿼리문을 담는 매퍼 xml 태그 위치 경로 설정 -->
+
 	</bean>
+	
+	<!-- daoImpl의 @repository가 설정된 부분을 스프링에서 오토 스캔으로 등록하게 한다 -->
+	<context:component-scan base-package="org.zerock.dao"/>
+
 </beans>
 
 

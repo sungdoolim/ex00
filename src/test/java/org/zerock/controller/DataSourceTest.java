@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 		locations= {"file:src/main/webapp/WEB-INF/spring/*.xml"})// 경로내 모든 xml불러오기
 public class DataSourceTest {
 
-	@Inject // 자동의존성 주입 ->  ds 참조변수에 객체 주소를 주입해서 실제사용할수 있게 의존성 주입 -> DI
+	@Inject // 자동의존성 주입 ->  ds 참조변수에 객체 주소를 주입해서 실제사용할수 있게 의존성 주입 -> DI / 중간 과정이 보이지 않음...
 	private DataSource ds;
 	/*
 	 * 스프링 의존성 주입 방법

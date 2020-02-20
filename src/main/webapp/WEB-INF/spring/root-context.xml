@@ -22,7 +22,7 @@
 		<property name="url"
 		value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
 		<property name="username" value="day"/>
-		<property name="password" value="day"/>	
+		<property name="password" value="1234"/>	
 	</bean>	
 		<!-- myvatis 와 spring연결 설정 작업 mybatis 환경 설정-->
 		

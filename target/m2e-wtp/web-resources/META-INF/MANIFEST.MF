@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Built-By: bohee
 Build-Jdk: 1.8.0_221
 Created-By: Maven Integration for Eclipse
 
+=======
+Manifest-Version: 1.0
+Built-By: bohee
+Build-Jdk: 1.8.0_221
+Created-By: Maven Integration for Eclipse
+
+>>>>>>> 9a2bdedb159bc0d27abdf69afd0a239f2969aea9

@@ -189,27 +189,11 @@ db연결
 우측 상단database development -> connect
 resources 폴더에 SQL폴더 생성 , 
 new ->other->sqlfile->이름정하고 생성 
-타임 = oracle_11 이름 : new oracle    db:xe
+
+sql 파일내에서...
+타임 = oracle_11 이름 : new oracle    db:xe   이거 해야 사용가능
 
 
-밑에는 tbl_member.sql임
---한글 주석문
---tbl_member테이블 생성
-create table tbl_member(
-userid varchar2(50) primary key,
-userpw varchar2(50) not null,
-username varchar2(50) not null,
-email varchar2(100),
-regdate date,--등록날짜
-updatedate date--수정날짜
-);
-select * from tbl_member;
-/*
- * primary key : 중복 불가
- * not null : 중복 허용
- * date: 날짜 타입
- * 
- * */
 
 
 

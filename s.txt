@@ -1,5 +1,7 @@
 home
-
+home
+home
+home
 설정 :
 jdk : 1.8 - pom.xml에서 강제설정
 \\192.168.0.200

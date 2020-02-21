@@ -13,16 +13,8 @@ public class MemberVO {
 	private String regdate;
 	private String updatedate;
 
-	public MemberVO(String userid, String userpw, String username, String email, String regdate, String updatedate) {
-	//	super();
-		this.userid = userid;
-		this.userpw = userpw;
-		this.username = username;
-		this.email = email;
-		this.regdate = regdate;
-		this.updatedate = updatedate;
-	}
-	
+
+
 	public String getUserid() {
 		return userid;
 	}

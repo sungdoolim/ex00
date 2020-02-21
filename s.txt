@@ -212,7 +212,9 @@ select * from tbl_member;
 
 
 
-
+member.xml : 쿼리 두는 곳
+mybatis-config.xml : 경로에 따른 별칭 지정
+root-context.xml : 빈을 활용하는 의존성 주입
 
 
 

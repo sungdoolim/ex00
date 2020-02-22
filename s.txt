@@ -197,10 +197,12 @@ sql 파일내에서...
 
 
 
+member.xml : 쿼리 두는 곳
+mybatis-config.xml : 경로에 따른 별칭 지정
+root-context.xml : 빈을 활용하는 의존성 주입
+web.xml : 
 
-
-
-
+service를 만드는 이유 : 고객의 추가 요청 처리 , 
 
 
 

@@ -34,7 +34,7 @@
 		<property name="configLocation"
 		value="classpath:/mybatis-config.xml"/>
 		<!-- classpath 경로 : src/main/resources
-		mybatis-config.xml은 데이터 저장 빈 클래스 객체명을 별칭으로 관리 -->
+		mybatis-config.xml은 데이터 저장 빈 클래스 객체명을 별칭으로 관리 : typealias있는 곳 -->
 
 
 	<!-- 쿼리문을 담는 매퍼 xml 태그 위치 경로 설정  . 여기서 classpath:는 src/main/resources까지의 경로-->

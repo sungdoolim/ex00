@@ -55,6 +55,15 @@
 	<context:component-scan 
 	base-package="org.zerock.dao"/>
 
+
+	<!-- service 추가목적 : 
+	1) 고객 추가 요구사항 반영 
+	2) 컨트롤러와 모델daoimpl을 연결하는 브릿지   
+	3) 스프링의 aop를 통한 트랜잭션 적용 => 데이터 일관성 유지
+	-->
+	<context:component-scan base-package="org.zerock.service"/><!-- 스프링에 등록 -->
+
+
 </beans>
 
 

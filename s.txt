@@ -205,13 +205,16 @@ root-context.xml {
 id dataSource : db 연결
 sqlSessionFactory : ref=dataSource에 접근
 sqlSession : ref=sqlSessionFactory에 접근하면서, 쿼리를 다루는 애
+ db
+/
+dao(Model): 인터페이스가 필수		
+  \
+service(고객의 추가 요구사항)	
+    	\
+ 		Controller 	--	 view(webinf/view경로에 .jsp확장자로)
+>>>>>>> fe4bf1febca38a44e393c0220971fa075081d1a5
 
-
-}
-service를 만드는 이유 : 고객의 추가 요청 처리 , 
-
-
-
+day6---------------------------------------------------------------
 
 
 

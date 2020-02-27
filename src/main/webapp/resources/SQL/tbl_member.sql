@@ -29,7 +29,7 @@ create table tbl_board(
 	,regdate date --등록 날짜
 	);
 	select * from tbl_board;
-	
+	delete from tbl_board;
 	/*
 	 * 시퀀스 : 번호 발생기  : 게시판 게시물 번호용도
 	 * 현재 이후 번호값만 발생 - 중복 번호 x , 

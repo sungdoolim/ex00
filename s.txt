@@ -216,6 +216,46 @@ service(고객의 추가 요구사항)
 
 day6---------------------------------------------------------------
 
+public String doC(@ModelAttribute("msg") String message) {
+		//@modelattribute("msg") : msg파라미터 이름에 인자값을 문자열로 전달한다
+		
+public String nameprice(Model m) {
+m.addAttribute("a",a); // 프론트단에서 사용 가능
+
+
+주소 변경 목적으로 넘기기
+	@RequestMapping("/doE")
+	public String doE(RedirectAttributes rttr) {
+		rttr.addFlashAttribute("msg","this is seven");
+
+		System.out.println(rttr.getFlashAttributes());
+		//msg에 담기, 서버단의 다른 주소로 전달! => 보안성 우수
+		return "redirect:/doF"; // doE => doF메핑 주소로 전달 = 프론트가 아님~!~!!!
+		
+	}
+	@RequestMapping("/doF")
+	public void doF(@ModelAttribute("msg") String name) {
+		// void형이면 메핑주소가 jsp파일명이 된다
+		//@modelattribute : 서버단 <> model : 프론트 단..???
+
+		System.out.println("전달된 값 :"+name);
+		
+	}
+
+daoimpl : 
+
+@Autowired
+	private SqlSession sqlSession;
+	
+this.sqlSession.insert("m_in",m);
+
+<insert id="m_in" parameterType="m">
+<!--  parameterType속성은 전달인자 타입으로 생략 가능 -->
+insert into tbl_member values(#{userid},#{userpw},#{username},#{email},sysdate,sysdate)
+<!--  sysdate : oracle날짜 함수 , #{userid}= m.getUserId() -->
+</insert>
+
+select 였다면 그냥 결과를 return 
 
 
 

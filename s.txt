@@ -214,7 +214,7 @@ select * from tbl_member;
 
 member.xml : 쿼리 두는 곳
 mybatis-config.xml : 경로에 따른 별칭 지정
-root-context.xml : 빈을 활용하는 의존성 주입
+root-context.xml : 빈을 활용하는 의존성 주입 
 web.xml : 
 
 service를 만드는 이유 : 고객의 추가 요청 처리 
@@ -227,15 +227,41 @@ service(고객의 추가 요구사항)
     	\
  		Controller 	--	 view(webinf/view경로에 .jsp확장자로)
 
-
-
-
-
 day6---------------------------------------------------------------
 
+cannot find class :  분명 있는데 없다고 뜨는 경우 :
+ package explorer에서는 있지만 없다는 경우 임 -> 실제 경로로 들어가 봐야함
+ 실 경로 :
+  [C: - 드라이브 ]\[workspace]\.metadata\.plugins\
+ org.eclipse.wst.server.core\tmp0\wtpwebapps로 이동-프로젝트명-
+ WEB-INF/lib폴더에 가면 pom.xml에서 추가한 라이브러리를 확인 가능
+ 하다.
+ 그리고 classes > org >zerock에 src/main이 존재
+ 그럼 여기에 아무것도 없기에 cannot find ! : 
+이때 package exploere에 있는 아무거나 하나 java를 다른 폴더로 옮겼다가 원래대로 옮기면
+나머지도 전부 실 경로에 추가되어 있음!
 
 
+onclick="location='/controller/board/board_list';"
+onsubmit="return check();">  submit버튼 누르면 check실행
 
+function check(){
+	if($.trim($("#writer").val())==""){
+		// trim : 양쪽 공백 제거 -> writer의 value를 공백 제거했더니 ""라면!
+		alert("글쓴이를 입력하세요!");
+		$("#writer").val('').focus();//val('')입력박스값을 초기화 ,  focus는 입력박스로 포커스 이동
+		return false;
+		
+	}
+}
+
+js 다운 : 
+jquery.com -> down -> 
+downliad the compressed ,production jquery 3.4.1
+->이거 exploer에서 해야함
+이름을 jquery.js라고 바꾸자 -> 만든폴더에 넣기
+
+0303----------------------------------------------------------------
 
 
 

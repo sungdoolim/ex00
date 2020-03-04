@@ -35,6 +35,21 @@ public class BoardDAOImpl implements BoardDAO {
 		return this.sqlSession.selectList("b_list");//mybatis에서 selectList는 하나 이상의 복수개의 레코드를 검색해서 컬렉션 List로 반환, b_list.는 select의 아이디명 
 	}
 
+	@Override
+	public void updateHit(int bno) {
+		
+		this.sqlSession.update("b_hit", bno);
+		//b_hit : update아이디 명 
+	}
+
+	@Override
+	public BoardVO getCont(int bno) {
+		// TODO Auto-generated method stub
+		
+		
+		return this.sqlSession.selectOne("b_cont",bno);
+	}
+
 	
 	
 	

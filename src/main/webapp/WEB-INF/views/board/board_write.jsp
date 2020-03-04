@@ -20,7 +20,7 @@ onsubmit="return check();"><!-- 이벤트 핸들러 : 데이터가 서버로 전
 			</th>
 			<td>
 				<input type="text" name="writer" id="writer" size="14"/>
-				<!-- 입력된 값은 name에 저장되어 서버로 전달되고, size는 입력 박스 길이,  -->
+				<!-- 입력된 값은 name에 저장되어 서버로 전달되고, size는 입력 박스 길이 , id 를 주는 이유는 js에서 사용 할 것  -->
 			</td>
 		</tr>
 		<tr>

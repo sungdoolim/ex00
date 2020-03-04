@@ -24,6 +24,25 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> getList() {
 		return this.boardDao.getList();
 	}
+
+	@Override
+	public void insertBoard(BoardVO b) {
+		this.boardDao.insertBoard(b);
+		
+	}
+
+	// 스프링 aop를 통한 트랜잭션을 적용하여 데이터 일치 -- 
+	@Override
+	public BoardVO getCont(int bno) {
+		// 두가지 기능 : content보내기, 조회수 올리기 
+		
+		this.boardDao.updateHit(bno);// 조회수 증가
+		
+		
+		
+		
+		return this.boardDao.getCont(bno);// content 가져오기
+	}
 	
 	
 	

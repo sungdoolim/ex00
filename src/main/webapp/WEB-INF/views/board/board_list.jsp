@@ -22,7 +22,9 @@
    <c:forEach var= "b" items="${blist }">
    <tr>
     <th>${b.bno }</th>
-    <th>${b.title }</th>
+  <th> 
+   <a href="/controller/board/board_cont?bno=${b.bno }">${b.title }</a>
+    </th>
     <th>${b.writer }</th>
     <th>${b.viewcnt }</th>
     <th>${b.regdate }</th>
@@ -37,6 +39,12 @@
     </th>
    </tr>
  </table>
+ <script>
+ var msg='${msg}'; //s에서 el로 값을 받아 올수 있음  - board_write_ok에서 전달 할껄? , 문자열을 처리하게 됨 , jquery가 아님!!!!
+		 if(msg=="SUCCESS"){// ==    이 가능하네.?			 js에서는 ' "  구분이 없음
+			 alert('게시물 저장에 성공했습니다');
+		 }
+ </script>
 
 
 </body>

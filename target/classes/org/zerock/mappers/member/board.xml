@@ -6,22 +6,29 @@ PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="Board">
 	<!-- 게시판 저장  -->
-<insert id="b_in" parameterType="org.zerock.vo.BoardVO"><!--  경로 전체 대신 b만 써도 됨 -->
-<!--  parameterType속성은 전달인자 타입으로 생략 가능 -->
+	<insert id="b_in" parameterType="org.zerock.vo.BoardVO"><!--  경로 전체 대신 b만 써도 됨 -->
+	<!--  parameterType속성은 전달인자 타입으로 생략 가능 -->
 	insert into tbl_board (bno,writer,title,content,regdate)
 	values(bno_seq.nextval,#{writer},#{title},#{content},sysdate)
-</insert>
-<!-- 총 레코드 개수 -->
+	</insert>
+	<!-- 총 레코드 개수 -->
 	<select id="b_count" resultType="int">
 	<!--  b_count로 접근 가능하고 int 로 반환 하겠다 -->
 	select count(*) from tbl_board	
 	</select>
 	
-	<select id="b_list" resultType="b">
+	<select id="b_list" resultType="b"> <!-- mybatis.config에 alias 해 놨음 -->
 	select * from tbl_board order by bno desc
 	<!-- 번호값을 기준으로 내림차순 정렬 -->
 	</select>
-
+	
+	<update id="b_hit" parameterType="int">
+	update tbl_board set viewcnt=viewcnt+1 where bno=#{bno}
+	</update>
+	
+	<select id="b_cont" parameterType="int" resultType="b">
+	select * from tbl_board where bno=#{bno}
+	</select>
 	
 
 </mapper>

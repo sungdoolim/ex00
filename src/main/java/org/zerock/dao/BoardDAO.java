@@ -11,6 +11,10 @@ public interface BoardDAO {//parent가 없음 = object를 상속하지 않음
 	int getCount();
 
 	List<BoardVO> getList();
+
+	void updateHit(int bno);
+
+	BoardVO getCont(int bno);
 	
 	
 

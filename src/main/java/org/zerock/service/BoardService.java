@@ -10,6 +10,10 @@ public interface BoardService {
 
 	List<BoardVO> getList();
 
+	void insertBoard(BoardVO b);
+
+	BoardVO getCont(int bno);
+
 	
 	
 }

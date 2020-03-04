@@ -28,7 +28,7 @@ create table tbl_board(
 	,viewcnt number(38) default 0-- 조회수 , 컬럼에 데이터 저장하지 않으면 0이 저장됨
 	,regdate date --등록 날짜
 	);
-	select * from tbl_board;
+	select * from tbl_board order by bno;
 	delete from tbl_board;
 	/*
 	 * 시퀀스 : 번호 발생기  : 게시판 게시물 번호용도

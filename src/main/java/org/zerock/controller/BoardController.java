@@ -17,7 +17,8 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
-	@RequestMapping(value="/board_list",method=RequestMethod.GET)// get 으로 접근하는 매핑 주소 board_list      주소는 http://localhost:8052/controller/board/board_list
+	// get 으로 접근하는 매핑 주소 board_list      주소는 http://localhost:8052/controller/board/board_list
+	@RequestMapping(value="/board_list",method=RequestMethod.GET)
 	public String board_list(Model m) throws Exception{
 		
 		int totalCount=this.boardService.getCount();// 총 게시물 개수
@@ -28,4 +29,15 @@ public class BoardController {
 		return "board/board_list";
 	}
 	
+	
+	@RequestMapping(value="/board_write",method=RequestMethod.GET)//get 방식으로 접근하는 매핑주소를 처리하자
+	public String board_write() {
+		return "board/board_write";//  뷰리졸브 : web-inf/view/ 까지는 자동으로 잡혀있음
+	}
+	
+	
+	
+	
+	
+
 }

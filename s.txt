@@ -1,4 +1,4 @@
-home
+home에서는 sqlplus day - 1234
 
 설정 :
 jdk : 1.8 - pom.xml에서 강제설정

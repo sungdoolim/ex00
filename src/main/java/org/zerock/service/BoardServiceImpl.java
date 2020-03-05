@@ -21,8 +21,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> getList() {
-		return this.boardDao.getList();
+	public List<BoardVO> getList(BoardVO b) {
+		return this.boardDao.getList(b);
 	}
 
 	@Override
@@ -42,6 +42,29 @@ public class BoardServiceImpl implements BoardService {
 		
 		
 		return this.boardDao.getCont(bno);// content 가져오기
+	}
+
+	@Override
+	public BoardVO getCont2(int bno) {
+		
+		return this.boardDao.getCont(bno);
+	}
+
+	@Override
+	public void editBoard(BoardVO eb) {
+		
+		this.boardDao.editBoard(eb);
+		
+		
+	}
+
+	@Override
+	public void delBoard(int bno) {
+		
+		this.boardDao.delBoard(bno);
+		
+		
+		
 	}
 	
 	

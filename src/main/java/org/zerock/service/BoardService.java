@@ -8,11 +8,17 @@ public interface BoardService {
 
 	int getCount();
 
-	List<BoardVO> getList();
+	List<BoardVO> getList(BoardVO b);
 
 	void insertBoard(BoardVO b);
 
 	BoardVO getCont(int bno);
+
+	BoardVO getCont2(int bno);
+
+	void editBoard(BoardVO eb);
+
+	void delBoard(int bno);
 
 	
 	

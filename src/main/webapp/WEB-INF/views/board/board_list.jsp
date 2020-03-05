@@ -40,9 +40,9 @@
    </tr>
  </table>
  <script>
- var msg='${msg}'; //s에서 el로 값을 받아 올수 있음  - board_write_ok에서 전달 할껄? , 문자열을 처리하게 됨 , jquery가 아님!!!!
-		 if(msg=="SUCCESS"){// ==    이 가능하네.?			 js에서는 ' "  구분이 없음
-			 alert('게시물 저장에 성공했습니다');
+ var msg='${msg}'; //s에서 el로 값을 받아 올수 있음  - board_write_ok에서 전달 할껄? , 문자열을 처리하게 됨 , jquery가 아님!!!! jquery였다면 $msg='${msg}'     좌값이 jquery
+		 if(msg=="SUCCESS"){// ==    이 가능하네.?			 js에서는 ' "  구분이 없음                                                    jquery였다면 $msg=="SUCCESS"
+			 alert('게시물 처리에 성공했습니다');  // 수정해도 이거 뜬다!
 		 }
  </script>
 

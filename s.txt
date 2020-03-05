@@ -84,7 +84,12 @@ tomcat9클릭 ->core의 zip클릭 -> 워크스페이스에 압축풀기 -> 그�
 ->openperspective -> spring -> server에 뭐시기 클릭 -> 아파치 -> 톰캣 9 -> 워크스페이스 브라우즈 -> finish
 
 포트번호 바꿔야함 :
+
+ --><Server port="8051" shutdown="SHUTDOWN">
 아파치 :8051
+
+    -->
+    <Connector connectionTimeout="20000" port="8052" protocol="HTTP/1.1" redirectPort="8443"/>
 8052 
 
 잠깐 글꼴 바꾸기

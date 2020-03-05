@@ -2,10 +2,13 @@ package org.zerock.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,11 +26,22 @@ public class BoardController {
 	private BoardService boardService;
 	// get 으로 접근하는 매핑 주소 board_list      주소는 http://localhost:8052/controller/board/board_list
 	@RequestMapping(value="/board_list",method=RequestMethod.GET)
-	public String board_list(Model m) throws Exception{
+	public String board_list(Model m, HttpServletRequest request,@ModelAttribute BoardVO b) throws Exception{
+		
+		//페이징
+		int page=1;// 현재 쪽 번호
+		int limit=10;//한 페이지에 보여지는 목록 개수
+		if(request.getParameter("page")!=null) {
+			//전달된 page가 존재한다면
+			page=Integer.parseInt(request.getParameter("page"));// 내가봤을때는 좀더 효율적으로 바꿀 수 있음
+			
+		}
+		b.setStartrow((page-1)*10+1);//시작행 번호
+		b.setEndrow(b.getStartrow()+limit-1);
 		
 		int totalCount=this.boardService.getCount();// 총 게시물 개수
 
-		List<BoardVO> blist=this.boardService.getList();//List : 지정해주면 모든 타입을 저장 가능!
+		List<BoardVO> blist=this.boardService.getList(b);//List : 지정해주면 모든 타입을 저장 가능! , db에서 가져오는 갯수 제한
 		m.addAttribute("totalCount",totalCount);
 		m.addAttribute("blist",blist);
 		
@@ -59,7 +73,7 @@ public class BoardController {
 	}
 	
 	//게시물 조회수 증가 + 내용보기   , getmapping은 requestmapping과 동일 기능 , 최신기능
-	@GetMapping("/board_cont")
+	@GetMapping("/board_cont")// get만! post는 postmapping
 	public ModelAndView board_cont(@RequestParam("bno") int bno) 
 	throws Exception{
 		/*
@@ -79,15 +93,40 @@ public class BoardController {
 	
 	//게시물 수정
 	@GetMapping("/board_edit")
-	public ModelAndView board_edit(int bno) {
+	public String board_edit(int bno, Model m) {
 		// bno와 같은 이름의 값을 저장 받은 것임!!!!
+		BoardVO eb=this.boardService.getCont2(bno);
+		// 번호에 해당하는 내용을 오라클로부터 가져옴   , getCont는 카운트 증가 하니까...
+		m.addAttribute("eb",eb);
+		//ModelAndView와 같은 기능인데  string반환 타입으로 바꿈
+		return "board/board_edit";
 		
 		
-		
-		return null;
+	}
+	@RequestMapping("/board_edit_ok")//get or post 둘다 가능 
+	public String board_edit_ok(@ModelAttribute BoardVO eb,
+			RedirectAttributes rttr)throws Exception {
+		/*
+		 *board_edit.jsp의 입력된 값이 저장된 eb
+		 *
+		 **/
+		this.boardService.editBoard(eb);
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		return "redirect:/board/board_list";
 	}
 	
-	
+	@RequestMapping("/board_del")
+	public ModelAndView board_del(HttpServletRequest request,RedirectAttributes rttr) throws Exception{
+		
+		
+		int bno=Integer.parseInt(request.getParameter("bno"));//board_cont에서 넘어옴.... 잘 안쓸듯....
+		this.boardService.delBoard(bno);
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return new ModelAndView("redirect:/board/board_list");
+		
+		
+	}
 	
 	
 

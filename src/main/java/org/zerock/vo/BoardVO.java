@@ -11,9 +11,10 @@ public class BoardVO {//데이터 저장빈 클래스
 	private int viewcnt;//조회수
 	private String regdate;//등록날짜
 	
-	
-	
-	
+	//페이징 
+	private int startrow;// 시작 행 번호
+	private int endrow; // 끝 행 번호
+		
 	public int getBno() {
 		return bno;
 	}
@@ -51,7 +52,18 @@ public class BoardVO {//데이터 저장빈 클래스
 		this.regdate = regdate;
 	}
 	
-
+	public int getStartrow() {
+		return startrow;
+	}
+	public void setStartrow(int startrow) {
+		this.startrow = startrow;
+	}
+	public int getEndrow() {
+		return endrow;
+	}
+	public void setEndrow(int endrow) {
+		this.endrow = endrow;
+	}
 	
 	
 	

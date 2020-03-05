@@ -17,7 +17,7 @@ PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
 	select count(*) from tbl_board	
 	</select>
 	
-	<select id="b_list" resultType="b"> <!-- mybatis.config에 alias 해 놨음 -->
+	<select id="b_list" resultType="b" parameterType="b"> <!-- mybatis.config에 alias 해 놨음 -->
 	select * from tbl_board order by bno desc
 	<!-- 번호값을 기준으로 내림차순 정렬 -->
 	</select>
@@ -29,6 +29,14 @@ PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="b_cont" parameterType="int" resultType="b">
 	select * from tbl_board where bno=#{bno}
 	</select>
+	
+	<update id="b_edit"><!-- parameterType="b"를 생략이 가능하구나.... -->
+	update tbl_board set writer=#{writer},title=#{title},content=#{content} where bno=#{bno}
+	</update>
+	
+	<delete id="b_del" parameterType="int">
+	delete from tbl_board where bno=#{bno}
+	</delete>
 	
 
 </mapper>

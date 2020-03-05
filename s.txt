@@ -263,6 +263,40 @@ downliad the compressed ,production jquery 3.4.1
 
 0303-------------------------------------------------------------
 0304-------------------------------------------------------------
+인자값 boardVO b   ,  int bno 줬을때 값이 들어가는데...
+생략된것 : @ModelAttribute BoardVO b   -  model에서 불러와서 저장하는 듯
+        @RequestParam("bno") int bno
+		
+ModelAndView는 Model m과 같은 기능
+view 단에 input method 지정하면 controller패키지 안에 모든 경로를 탐색 - 때문에 유일해야함
+		
+		
+dao.impl에서 id값 주고 mapper에 접근할때 
+namespace.id로 갈수 있음!!
+return this.sqlSession.selectOne("Board.b_count");
+		==selectOne("b_count");
+		
+		
+오늘꺼 충돌 쫌 날듯....
+0305------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

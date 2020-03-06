@@ -150,12 +150,19 @@ HttpSession session;
 		 *board_edit.jsp의 입력된 값이 저장된 eb
 		 *
 		 **/
-	
 		this.boardService.editBoard(eb);
 		rttr.addFlashAttribute("msg", "SUCCESS");
-	
-		//request.setAttribute("page", page);
+		//request.setAttribute("page", page); 얘는 안됨.....ㅠㅠㅠㅠㅠㅠ
+		//m.addAttribute("page",page); // 예도 안되네....
 		
+		// 리턴타입 ModelAndView하고 
+		
+		
+		/*
+		ModelAndView m=new ModelAndView("redirect:/board/board_list");    // 이거하면 ? page=으로 넘어가게됨
+		m.addObject("page",page);
+		return m;
+		*/
 		
 		return "redirect:/board/board_list?page="+page;// 얘도 controller로
 	}

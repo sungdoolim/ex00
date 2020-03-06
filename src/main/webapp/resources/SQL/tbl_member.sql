@@ -29,6 +29,7 @@ create table tbl_board(
 	,regdate date --등록 날짜
 	);
 	select * from tbl_board order by bno;
+	insert into TBL_BOARD values(bno_seq,'test','test','test',0,sysdate());
 	delete from tbl_board;
 	/*
 	 * 시퀀스 : 번호 발생기  : 게시판 게시물 번호용도

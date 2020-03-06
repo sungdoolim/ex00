@@ -24,12 +24,12 @@
 <tr>
 	<th colspan="2">
 		<input type="button" value="수정"
-		onclick="location='/controller/board/board_edit?bno=${b.bno}';"/>
+		onclick="location='/controller/board/board_edit?bno=${b.bno}&page=${page }';"/>
 		<%--get방식으로 전달 --%>
 		<input type="button" value="삭제"
 		onclick="location='/controller/board/board_del?bno=${b.bno}';"/>
 		<input type="button" value="목록"
-		onclick="location='/controller/board/board_list';"/>
+		onclick="location='/controller/board/board_list?page=${page}';"/><!-- sessionScope.page도 됨 -->
 		
 	</th>
 </tr>

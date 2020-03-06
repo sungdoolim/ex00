@@ -18,8 +18,14 @@ PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="b_list" resultType="b" parameterType="b"> <!-- mybatis.config에 alias 해 놨음 -->
-	select * from tbl_board order by bno desc
-	<!-- 번호값을 기준으로 내림차순 정렬 -->
+	select * from 
+	(select rowNum rNum,bno,writer,title,viewcnt,regdate
+	from (select * from tbl_board order by bno desc))
+	where rNum &gt;=#{startrow} and rNum &lt;=#{endrow}
+	
+	<!-- rowNum은 테이블 생성시 오라클이 제공하는 컴럼으로 레코드 저장시 일련 번호값이 저장됨, 일련번호는 중복번호가 없고 1씩증가 
+	 rNum은 rowNum의 별칭을 지어준것임 , &gt : > 			&lt : < -->
+	 <!--  모든 값 불러오기 -> 그중 rnum값 포함에서 select -> 그중 rnum 범위에 맞는것만 불러오기 -->
 	</select>
 	
 	<update id="b_hit" parameterType="int">

@@ -36,7 +36,7 @@ onsubmit="return check();"><!-- 이벤트 핸들러 : 데이터가 서버로 전
 			<th colspan="2"><!--  위에 보면 tr내에 두개 태그가 있는데 하나로 합쳐버리자! -->
 				<input type="submit" value="저장"/>
 				<input type="reset" value="취소"/>
-				<input type="button" value="목록" onclick="location='/controller/board/board_list';"/>
+				<input type="button" value="목록" onclick="location='/controller/board/board_list?page=${page}';"/><!-- session의 page를 가져가는것일꺼야 -->
 				<!-- 클릭시에 location이동  -->
 			</th>
 			

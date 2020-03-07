@@ -36,4 +36,11 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping("/androidtest")
+	public String andr() {
+		
+		
+		return "s";
+	}
+	
 }

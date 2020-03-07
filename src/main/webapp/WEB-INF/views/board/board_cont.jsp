@@ -13,6 +13,9 @@
 	</th>
 </tr>
 <tr>
+	<th>글쓴이</th> <td>${b.writer }</td><%--boardcontroller cont에서 넘어오는 b객체를 사용 --%>
+</tr>
+<tr>
 	<th>제목</th> <td>${b.title }</td><%--boardcontroller cont에서 넘어오는 b객체를 사용 --%>
 </tr>
 <tr>

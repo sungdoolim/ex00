@@ -3,6 +3,7 @@ package org.zerock.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.zerock.vo.SampleVO;
 
 @RestController // 스프링 4.0이후부터 지원하는 에노테이션 : jsp뷰 페이지를 만들지 않고도 ,Rest방식의 데이터 처리를 위해 사용함 : 만들어지는 객체는 String,JSON,XML
 

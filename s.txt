@@ -2,7 +2,7 @@ home에서는 sqlplus day - 1234
 
 설정 :
 jdk : 1.8 - pom.xml에서 강제설정
-\\192.168.0.200
+\\192.168.58.100
 
 처음 이클립스로 설치할때
  market -> sts -> spring tools 3 설치 -> 다 체크 후 confirm
@@ -319,11 +319,50 @@ return this.sqlSession.selectOne("Board.b_count");
 오늘꺼 충돌 쫌 날듯....
 0305------------------------------------------------------------
 
-0306------------------------------------------------------------
+0306-------------------------------------------------------------
+rest ?{
+jsp파일을 만들지않고 json객체나 string으로 받아와서 사용
+json : 키:값
+
+}
+
+0307-------------------------------------------------------------
+
+ajax : 불필요한 화면 전환이 없다
+
+advanced rest client 검색 -> 크롬에 추가 -> 앱추가{
+일단 이거 실행시켜서 포스트 방식으로
+url =http://127.0.0.1:8052/controller/replies/
+{"bno":"27",
+"replyer":"댓글작성자",
+ "replytext":"댓글내용"
+} - vo와 맞춰줘야함
+
+http://127.0.0.1:8052/controller/replies/all/27.json
+로 입력해보면 json 가져옴, 그냥 웹에서 출력도 가능
+
+}
+
+ requestbody : json을 객체로!
+@PathVariable("rno") int rno
+
+ResponseEntity<String> 
+entity=new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
+리턴으로 객체 이고 (제네릭 타입, 상태)리턴
+			
+
+url =http://127.0.0.1:8052/controller/replies/2
+put에 두고
+{
+  "replytext":"수정"
+}하면 바뀜....
+
+삭제
+delete 선택
+url =http://127.0.0.1:8052/controller/replies/2
 
 
-
-
+0308------------------------------------------------------
 
 
 

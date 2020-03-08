@@ -135,7 +135,7 @@ HttpSession session;
 		// bno와 같은 이름의 값을 저장 받은 것임!!!!
 		BoardVO eb=this.boardService.getCont2(bno);
 		// 번호에 해당하는 내용을 오라클로부터 가져옴   , getCont는 카운트 증가 하니까...
-		
+			
 		m.addAttribute("eb",eb);
 		m.addAttribute("page",page);
 		//ModelAndView와 같은 기능인데  string반환 타입으로 바꿈

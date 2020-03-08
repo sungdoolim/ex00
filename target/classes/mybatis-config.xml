@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <!-- MemberVO 빈 클래스 객체 별칭 m을 설정 -->
 	<typeAlias alias="m" type="org.zerock.vo.MemberVO"/>
 	<typeAlias alias="b" type="org.zerock.vo.BoardVO"/>
+	<typeAlias alias="r" type="org.zerock.vo.ReplyVO"/>
 	
 </typeAliases>
 </configuration>

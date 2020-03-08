@@ -32,6 +32,17 @@
 	
 	<!-- 라이브러리(프레임웍=>구조틀) 추가 시작 -->
 	
+	
+	<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+<dependency>
+    <groupId>com.googlecode.json-simple</groupId>
+    <artifactId>json-simple</artifactId>
+    <version>1.1.1</version>
+</dependency>
+
+
+	
+	
 	 <!-- 커넥션 풀을 위한 라이브러리 -->
 		<dependency>
 		  <groupId>commons-dbcp</groupId>

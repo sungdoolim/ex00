@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="andro">
+	<!-- 게시판 저장  -->
+
+	<!-- 총 레코드 개수 -->
+	<select id="A_pw" parameterType="String" resultType="String">
+	select userpw from tbl_member where userid=#{id}
+	</select>
+	
+	
+
+</mapper>

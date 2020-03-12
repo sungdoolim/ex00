@@ -10,11 +10,13 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.zerock.dao.AndDAO;
 import org.zerock.vo.SampleVO;
 
 /**
@@ -24,7 +26,8 @@ import org.zerock.vo.SampleVO;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+	@Autowired
+	 private AndDAO andtest;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -78,6 +81,20 @@ public class HomeController {
         // json객체에 배열을 넣음
         jsonMain.put("sendData", jArray);
         return jsonMain;
+	}
+	@RequestMapping("/AgetPassword")
+	public @ResponseBody JSONObject getpw(String id) {
+	System.out.println("getpw");
+	System.out.println(id);
+		 JSONObject jsonMain = new JSONObject(); // json 객체
+
+		 String pw=andtest.getpw(id);
+		 jsonMain.put("pw", pw);
+		 System.out.println(pw);
+		 
+		 
+		return jsonMain;
+		
 	}
 	
 }

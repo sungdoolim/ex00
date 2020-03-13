@@ -8,7 +8,11 @@
 <h1>
 	Hello world!  
 </h1>
+<form action="doC" method="post">
+<input type="Text" name="msg">
+<input type="submit">
 
+</form>
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>

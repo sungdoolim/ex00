@@ -19,7 +19,7 @@ public class MemberDAOPTest {
 	@Test
 	public void testInsertMember()throws Exception{
 		MemberVO m=new MemberVO();
-		m.setUserid("aaa");
+		m.setUserid("a");
 		m.setUsername("이순신");
 		m.setUserpw("1232");
 		m.setEmail("hong@naver.com");

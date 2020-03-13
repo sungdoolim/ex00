@@ -15,7 +15,7 @@ public class OracleConTest {
 			"jdbc:oracle:thin:@127.0.0.1:1521:xe";
 	//오라클 접속주소,1521은 포트 번호 ,xe는 db명
 	private static final String USER="day";
-	private static final String PW="day";
+	private static final String PW="1234";
 	
 	@Test//junit test : 연습파일 만들기
 	public void testCon() throws Exception{

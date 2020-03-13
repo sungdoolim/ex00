@@ -1,4 +1,5 @@
-master  master master
+home에서는 sqlplus day - 1234
+
 설정 :
 jdk : 1.8 - pom.xml에서 강제설정
 \\192.168.58.100
@@ -83,7 +84,12 @@ tomcat9클릭 ->core의 zip클릭 -> 워크스페이스에 압축풀기 -> 그�
 ->openperspective -> spring -> server에 뭐시기 클릭 -> 아파치 -> 톰캣 9 -> 워크스페이스 브라우즈 -> finish
 
 포트번호 바꿔야함 :
+
+ --><Server port="8051" shutdown="SHUTDOWN">
 아파치 :8051
+
+    -->
+    <Connector connectionTimeout="20000" port="8052" protocol="HTTP/1.1" redirectPort="8443"/>
 8052 
 
 잠깐 글꼴 바꾸기
@@ -188,27 +194,11 @@ db연결
 우측 상단database development -> connect
 resources 폴더에 SQL폴더 생성 , 
 new ->other->sqlfile->이름정하고 생성 
-타임 = oracle_11 이름 : new oracle    db:xe
+
+sql 파일내에서...
+타임 = oracle_11 이름 : new oracle    db:xe   이거 해야 사용가능
 
 
-밑에는 tbl_member.sql임
---한글 주석문
---tbl_member테이블 생성
-create table tbl_member(
-userid varchar2(50) primary key,
-userpw varchar2(50) not null,
-username varchar2(50) not null,
-email varchar2(100),
-regdate date,--등록날짜
-updatedate date--수정날짜
-);
-select * from tbl_member;
-/*
- * primary key : 중복 불가
- * not null : 중복 허용
- * date: 날짜 타입
- * 
- * */
 
 
 
@@ -216,9 +206,10 @@ member.xml : 쿼리 두는 곳
 mybatis-config.xml : 경로에 따른 별칭 지정
 root-context.xml : 빈을 활용하는 의존성 주입 
 web.xml : 
-
-service를 만드는 이유 : 고객의 추가 요청 처리 
----------------------------------------------------------------
+root-context.xml {
+id dataSource : db 연결
+sqlSessionFactory : ref=dataSource에 접근
+sqlSession : ref=sqlSessionFactory에 접근하면서, 쿼리를 다루는 애
  db
 /
 dao(Model): 인터페이스가 필수		
@@ -226,7 +217,55 @@ dao(Model): 인터페이스가 필수
 service(고객의 추가 요구사항)	
     	\
  		Controller 	--	 view(webinf/view경로에 .jsp확장자로)
+>>>>>>> fe4bf1febca38a44e393c0220971fa075081d1a5
 
+day6---------------------------------------------------------------
+
+<<<<<<< HEAD
+public String doC(@ModelAttribute("msg") String message) {
+		//@modelattribute("msg") : msg파라미터 이름에 인자값을 문자열로 전달한다
+		
+public String nameprice(Model m) {
+m.addAttribute("a",a); // 프론트단에서 사용 가능
+
+
+주소 변경 목적으로 넘기기
+	@RequestMapping("/doE")
+	public String doE(RedirectAttributes rttr) {
+		rttr.addFlashAttribute("msg","this is seven");
+
+		System.out.println(rttr.getFlashAttributes());
+		//msg에 담기, 서버단의 다른 주소로 전달! => 보안성 우수
+		return "redirect:/doF"; // doE => doF메핑 주소로 전달 = 프론트가 아님~!~!!!
+		
+	}
+	@RequestMapping("/doF")
+	public void doF(@ModelAttribute("msg") String name) {
+		// void형이면 메핑주소가 jsp파일명이 된다
+		//@modelattribute : 서버단 <> model : 프론트 단..???
+
+		System.out.println("전달된 값 :"+name);
+		
+	}
+
+daoimpl : 
+
+@Autowired
+	private SqlSession sqlSession;
+	
+this.sqlSession.insert("m_in",m);
+
+<insert id="m_in" parameterType="m">
+<!--  parameterType속성은 전달인자 타입으로 생략 가능 -->
+insert into tbl_member values(#{userid},#{userpw},#{username},#{email},sysdate,sysdate)
+<!--  sysdate : oracle날짜 함수 , #{userid}= m.getUserId() -->
+</insert>
+
+select 였다면 그냥 결과를 return 
+
+
+
+=======
 day6---------------------------------------------------------------
 
 cannot find class :  분명 있는데 없다고 뜨는 경우 :

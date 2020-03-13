@@ -20,6 +20,7 @@ public class BoardDAOTest {
 		BoardVO b=new BoardVO();
 		b.setWriter("홍길동");b.setTitle("게시판 제목입니다.");
 		b.setContent("게시판 내용입니다.");
+		System.out.println("te");
 		this.boardDao.insertBoard(b);
 	}
 	

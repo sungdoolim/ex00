@@ -1,5 +1,11 @@
 	package org.zerock.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -96,5 +102,37 @@ public class HomeController {
 		return jsonMain;
 		
 	}
+	@RequestMapping("/Crawling")
+	public void crawl() throws MalformedURLException, IOException {
+		while(true) {
+		String target="https://www.naver.com/";
+		HttpURLConnection con=(HttpURLConnection) new URL(target).openConnection();
+		BufferedReader br=new BufferedReader(new InputStreamReader(con.getInputStream(),"UTF-8"));
+		String temp;
+		int i=0;
+		
+		while((temp=br.readLine())!=null) {
+			//원하는 데이터는 if 문으로!
+			if(temp.contains("class=\"an_txt\"")) {
+				// System.out.println(i+" "+temp);
+				String tem=temp.split("txt\">")[1].split("<")[0];
+			System.out.println(i+" "+tem);
+			i++;
+			}
+		}
+		con.disconnect();
+		br.close();
+		try {
+			Thread.sleep(10000);// 10초마다 전체코드를 반복 하겠습니다
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		
+		
+		
+	}
+	
 	
 }

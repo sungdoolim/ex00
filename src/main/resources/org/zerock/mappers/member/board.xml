@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Board">
+	<!-- 게시판 저장  -->
+	<insert id="b_in" parameterType="org.zerock.vo.BoardVO"><!--  경로 전체 대신 b만 써도 됨 -->
+	<!--  parameterType속성은 전달인자 타입으로 생략 가능 -->
+	insert into tbl_board (bno,writer,title,content,regdate)
+	values(bno_seq.nextval,#{writer},#{title},#{content},sysdate)
+	</insert>
+	<!-- 총 레코드 개수 -->
+	<select id="b_count" resultType="int">
+	<!--  b_count로 접근 가능하고 int 로 반환 하겠다 -->
+	select count(*) from tbl_board	
+	</select>
+	
+	<select id="b_list" resultType="b" parameterType="b"> <!-- mybatis.config에 alias 해 놨음 -->
+	select * from 
+	(select rowNum rNum,bno,writer,title,viewcnt,regdate
+	from (select * from tbl_board order by bno desc))
+	where rNum &gt;=#{startrow} and rNum &lt;=#{endrow}
+	
+	<!-- rowNum은 테이블 생성시 오라클이 제공하는 컴럼으로 레코드 저장시 일련 번호값이 저장됨, 일련번호는 중복번호가 없고 1씩증가 
+	 rNum은 rowNum의 별칭을 지어준것임 , &gt : > 			&lt : < -->
+	 <!--  모든 값 불러오기 -> 그중 rnum값 포함에서 select -> 그중 rnum 범위에 맞는것만 불러오기 -->
+	</select>
+	
+	<update id="b_hit" parameterType="int">
+	update tbl_board set viewcnt=viewcnt+1 where bno=#{bno}
+	</update>
+	
+	<select id="b_cont" parameterType="int" resultType="b">
+	select * from tbl_board where bno=#{bno}
+	</select>
+	
+	<update id="b_edit"><!-- parameterType="b"를 생략이 가능하구나.... -->
+	update tbl_board set writer=#{writer},title=#{title},content=#{content} where bno=#{bno}
+	</update>
+	
+	<delete id="b_del" parameterType="int">
+	delete from tbl_board where bno=#{bno}
+	</delete>
+	
+
+</mapper>

@@ -28,7 +28,7 @@
 		
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
+		<property name="dataSource" ref="dataSource"/><!-- ref는 얘가 호출되면 이어서 호출하는 것! = 얘호출되면 위에꺼 호출됨  -->
 		<!-- setter()메서드를 통한 의돈성 주입 DI -->
 		<!-- mybatis 환경 설정 태그 경로 설정 -->
 		<property name="configLocation"
@@ -36,12 +36,33 @@
 		<!-- classpath 경로 : src/main/resources
 		mybatis-config.xml은 데이터 저장 빈 클래스 객체명을 별칭으로 관리 -->
 
-<!-- 쿼리문을 담는 매퍼 xml 태그 위치 경로 설정 -->
+
+	<!-- 쿼리문을 담는 매퍼 xml 태그 위치 경로 설정  . 여기서 classpath:는 src/main/resources까지의 경로-->
+		<property name="mapperLocations" value="classpath:org/zerock/mappers/*/*.xml"/>
 
 	</bean>
 	
+	<!-- mybatis 쿼리문 수행 객체 설정 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"
+		destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory"
+		ref="sqlSessionFactory"/>
+	<!-- constructor-arg  : 생성자를 뜻함  -> 생성자를 통한 의존성 주입(DI) -->
+	</bean>
+	
+	
 	<!-- daoImpl의 @repository가 설정된 부분을 스프링에서 오토 스캔으로 등록하게 한다 -->
-	<context:component-scan base-package="org.zerock.dao"/>
+	<context:component-scan 
+	base-package="org.zerock.dao"/>
+
+
+	<!-- service 추가목적 : 
+	1) 고객 추가 요구사항 반영 
+	2) 컨트롤러와 모델daoimpl을 연결하는 브릿지   
+	3) 스프링의 aop를 통한 트랜잭션 적용 => 데이터 일관성 유지
+	-->
+	<context:component-scan base-package="org.zerock.service"/><!-- 스프링에 등록 -->
+
 
 </beans>
 

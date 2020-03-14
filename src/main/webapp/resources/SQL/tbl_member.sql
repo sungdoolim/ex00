@@ -10,6 +10,11 @@ updatedate date--수정날짜
 );
 select * from tbl_member;
 --오라클 날짜 함수 확인 , dual 테이블은 오라클 설치시 설치되는 임시테이블로 오라클 함수나 연산 겨로가값 확인 용도
+
+	insert into tbl_member (userid,userpw,username,email,regdate,updatedate)
+	values('a','q','q','con',sysdate,sysdate);
+
+
 select sysdate from dual;
 /*
  * primary key : 중복 불가

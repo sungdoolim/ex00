@@ -77,7 +77,7 @@ public class ReplyController {
 		return entity;
 	}
 	
-	@RequestMapping(value="{rno}",method=RequestMethod.DELETE)// 이게 툴에 버튼이 있던데?? put,patch,get,post,delete,.....
+	@RequestMapping(value="{rno}",method=RequestMethod.DELETE)// 이게 툴에 버튼이 있던데?? put,patch,get,post,delete,.....위와 주소는 같지만 method달라서 다르게 인식
 	public ResponseEntity<String> del(@PathVariable("rno") int rno){
 		ResponseEntity<String> entity=null;
 		try {

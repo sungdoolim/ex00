@@ -364,8 +364,50 @@ url =http://127.0.0.1:8052/controller/replies/2
 
 0308------------------------------------------------------
 
+ajax 통신
+	$('#replyAddBtn').on('click',function(){
+		var replyer =$('#newReplyWriter').val();//value를 가져오는 것
+		var replytext=$('#newReplyText').val();
+		
+		
+		$.ajax({// ajax를 사용해보자 - get/post방식을 처리 , 많이 사용함!!!!! getjson보다 훨씬 많이 쓰나봐용....
+			type:'post', // 서버를 자료를 보내는 형식
+			url:'/controller/replies',
+			headers:{
+				"Content-Type":"application/json",
+				"X-HTTP-Method-Override":"POST"
+			},
+			dataType:"text",
+			data:JSON.stringify({
+				bno:bno,//key:value쌍의 json데이터로 전송    지금 bno는 29라고 위에 지정해놨음
+				replyer:replyer,
+				replytext:replytext
+			}),
+			success:function(result){//ajax로 받아오는 것이 성공되면 호출되는 콜백 함수, 받아온 자료는 result 매게변수에 저장
+				if(result=='success'){
+					alert('댓글이 등록되었습니다!');
+					getAllList();
+				}
+			}
+		});		
+	});
+	
+	
+aop : - db랑 연동하는 부분인듯...?
+aspect oriented programming: 데이터 일관성을 유지
+
+37   12과목 +1 
+-13 = 24      4+1
+15            5
+9             3
+
+트랜잭션 :
+여러 sql문을 실행하는데 하나라도 틀리면 모든 것 rollback
 
 
+
+
+0314------------------------------------------------------
 
 
 

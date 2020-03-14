@@ -12,11 +12,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +38,7 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired
 	 private AndDAO andtest;
+	HttpSession session;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -49,6 +54,47 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
+	}
+	
+	
+	
+	//아작스 댓글 목록
+	@RequestMapping("/test")
+	public void test() {//반환 타입 없는 void 라면 라면 매핑 주소(/test)가 뷰페이지 파일명이 되는 것 -> /web-inf/views/test.jsp
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping("/andMain3")
+	public @ResponseBody JSONObject getSid(HttpServletRequest request) {
+		session=request.getSession();
+		String id="1";
+		session.setAttribute("id", id);
+		JSONObject jobj=new JSONObject();
+		
+		
+		return jobj;
 	}
 	
 	@RequestMapping("/androidtest")

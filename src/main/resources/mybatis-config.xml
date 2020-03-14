@@ -9,6 +9,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAlias alias="m" type="org.zerock.vo.MemberVO"/>
 	<typeAlias alias="b" type="org.zerock.vo.BoardVO"/>
 	<typeAlias alias="r" type="org.zerock.vo.ReplyVO"/>
+	<typeAlias alias="user" type="org.zerock.vo.UserVO"/>
+	<typeAlias alias="message" type="org.zerock.vo.MessageVO"/>
+	
 	
 </typeAliases>
 </configuration>

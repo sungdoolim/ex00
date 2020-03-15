@@ -15,4 +15,7 @@ public interface ReplyDAO {
 
 	void delReply(int rno);
 
+	int getBno(int rno);//댓글 번호를 기준으로 게시물 번호값을 구함
+	
+
 }

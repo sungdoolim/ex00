@@ -23,7 +23,10 @@
    <tr>
     <th>${b.bno }</th>
   <th> 
-   <a href="/controller/board/board_cont?bno=${b.bno }&page=${page}">${b.title }</a>
+   <a href="/controller/board/board_cont?bno=${b.bno }&page=${page}">${b.title }
+   <c:if test="${b.replycnt!=0 }">
+   &nbsp;&nbsp;<strong>[댓글 개수] ${b.replycnt }</strong></c:if>
+   </a>
     </th>
     <th>${b.writer }</th>
     <th>${b.viewcnt }</th>

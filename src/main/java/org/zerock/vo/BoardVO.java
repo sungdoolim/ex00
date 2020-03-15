@@ -10,6 +10,8 @@ public class BoardVO {//데이터 저장빈 클래스
 	private String content;//내용
 	private int viewcnt;//조회수
 	private String regdate;//등록날짜
+	private int replycnt; // 댓글 갯수
+	
 	
 	//페이징 
 	private int startrow;// 시작 행 번호
@@ -63,6 +65,12 @@ public class BoardVO {//데이터 저장빈 클래스
 	}
 	public void setEndrow(int endrow) {
 		this.endrow = endrow;
+	}
+	public int getReplycnt() {
+		return replycnt;
+	}
+	public void setReplycnt(int replycnt) {
+		this.replycnt = replycnt;
 	}
 	
 	

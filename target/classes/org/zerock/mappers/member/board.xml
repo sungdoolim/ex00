@@ -19,7 +19,7 @@ PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="b_list" resultType="b" parameterType="b"> <!-- mybatis.config에 alias 해 놨음 -->
 	select * from 
-	(select rowNum rNum,bno,writer,title,viewcnt,regdate
+	(select rowNum rNum,bno,writer,title,viewcnt,regdate,replycnt
 	from (select * from tbl_board order by bno desc))
 	where rNum &gt;=#{startrow} and rNum &lt;=#{endrow}
 	
@@ -43,6 +43,11 @@ PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="b_del" parameterType="int">
 	delete from tbl_board where bno=#{bno}
 	</delete>
+	
+	<!-- 댓글 개수 변경 , 파라미터타입은 생략가능!!!!!-->
+	<update id="updateReplyCnt" parameterType="java.util.HashMap">
+	update tbl_board set replycnt=replycnt+#{amount} where bno=#{bno}
+	</update>
 	
 
 </mapper>

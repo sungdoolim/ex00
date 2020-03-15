@@ -1,10 +1,11 @@
 package org.zerock.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import org.zerock.vo.BoardVO;
@@ -61,6 +62,21 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void delBoard(int bno) {
 		this.sqlSession.delete("b_del",bno);
+		
+	}
+
+	@Override
+	public void updateReplyCnt(int bno, int amount) {
+		Map<String,Object> pm=new HashMap<>();
+		//HashMap<String,Object> pm=new HashMap<>();
+		
+		pm.put("bno", bno);
+		pm.put("amount", amount);
+		this.sqlSession.update("updateReplyCnt",pm);
+		
+		
+		
+		
 		
 	}
 

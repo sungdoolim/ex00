@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAlias alias="r" type="org.zerock.vo.ReplyVO"/>
 	<typeAlias alias="user" type="org.zerock.vo.UserVO"/>
 	<typeAlias alias="message" type="org.zerock.vo.MessageVO"/>
+	<typeAlias alias="admin" type="org.zerock.vo.AdminVO"/>
 	
 	
 </typeAliases>

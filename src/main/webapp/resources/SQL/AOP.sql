@@ -30,8 +30,15 @@ increment by 1
 nocache; 
 select mid_no_seq.nextval from dual;
 
+--tbl_board테이블에 댓글수를 카운터해서 저장할 relpycnt컬럼을 추가
+alter table tbl_board
+add(replycnt number(38) default 0);
+select * from tbl_board order by bno desc;
 
-
+--위와 같이 쿼리날리면 전에 있던 것들 전부 default처리됨
+update tbl_board set replycnt=(
+	select count(rno) from tbl_reply where bno=tbl_board.bno
+)where bno>0;
 
 
 

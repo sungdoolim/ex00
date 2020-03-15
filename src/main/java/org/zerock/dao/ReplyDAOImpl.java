@@ -38,5 +38,11 @@ public class ReplyDAOImpl implements ReplyDAO {
 	
 		this.sqlSession.delete("r_del", rno);
 	}
+
+	@Override
+	public int getBno(int rno) {
+		// TODO Auto-generated method stub
+		return this.sqlSession.selectOne("reply_bno",rno);// 댓글 번호에 해당하는 게시물 번호값을 반환
+	}
 	
 }

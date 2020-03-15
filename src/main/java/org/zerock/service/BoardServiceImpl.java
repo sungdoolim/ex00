@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 import org.zerock.dao.BoardDAO;
 import org.zerock.vo.BoardVO;
 
@@ -31,16 +33,16 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
-	// 스프링 aop를 통한 트랜잭션을 적용하여 데이터 일치 -- 
+	
+	
+	// 스프링 aop를 통한 트랜잭션을 적용하여 데이터 일치 -- , isolation : 트랜젝션 격리?:commit, rollback이 처리  중간에 외부 간섭을 제거  (...사실 필요 없음...)
+	@Transactional(isolation=Isolation.READ_COMMITTED)
 	@Override
 	public BoardVO getCont(int bno) {
 		// 두가지 기능 : content보내기, 조회수 올리기 
 		
 		this.boardDao.updateHit(bno);// 조회수 증가
-		
-		
-		
-		
+
 		return this.boardDao.getCont(bno);// content 가져오기
 	}
 

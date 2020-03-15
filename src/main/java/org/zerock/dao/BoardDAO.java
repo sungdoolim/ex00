@@ -19,6 +19,8 @@ public interface BoardDAO {//parent가 없음 = object를 상속하지 않음
 	void editBoard(BoardVO eb);
 
 	void delBoard(int bno);
+
+	void updateReplyCnt(int bno, int amount);
 	
 	
 

@@ -1,0 +1,112 @@
+@charset "UTF-8";
+/*admin _login ui*/
+
+#aLogin_wrap{
+	width:340px;height:160px;border:1px solid blue;
+	box-shadow:20px 20px 20px #ccc;
+	margin-left:auto;margin-right:auto;/*div 수평중앙정렬*/
+	margin-top:250px;/*바깥 상단여백 지정*/
+	border-radius:25px;/*테두리를 설정*/
+	
+}
+
+#aLogin_wrap .aLogin_title{
+	margin:20px 0px 0px 96px;/*바깥 위쪽 -> 오른쪽 -> 아래쪽 ->왼쪽 여백 설정 */
+	width:140px; font-size:19px;background:gray; border-radius:15px;/*background-color도 상관없음*/
+	text-aling:center;
+	padding:2px;/*상하좌우 여백을 지정*/
+}
+
+#aLogin_t{
+	margin:20px 0px 0px 10px;
+}
+
+
+/*admin_main.jsp ui*/
+#aMain_wrap{
+	width:860px; height:760px;border:1px solid blue; border-radius:15px;
+	box-shadow:15px 15px 15px #ccc;
+	margin-left:auto;margin-right:auto;
+	margin-top:30px;
+	
+}
+#aMain_header{
+	width:840; height:160px; border:1px solid red; margin:10px 0px 0px 10px;
+	border-radius:15px;
+}
+#aMain_logo{
+	float:left;/*div옆으로 뭔가 넣을수 있음*/
+	width:150px;
+	height:140px;
+	border:1px solid gray;
+	border-radius:15px; margin:10px 0px 0px 10px;
+	
+}
+#aMain_logo img{
+	width:120px;height:55px;margin:41px 0px 0px 14px;
+}
+#aMain_menu{
+	float:left; width:380px; height:140px; border:1px solid gray;
+	border-radius:15px; margin:10px 0px 0px 10px;
+}
+#aMain_menu ul li{
+	/*display:inline; 수직목록(div들)을 수평정렬로 바꿔버림*/
+	float:left;
+	margin-top:97px 0px 0px 0px;
+	list-style:none;
+	padding:0px 9px;
+}
+#aMain_right{
+	float:left;
+	width:264px;
+	height:140px;
+	border:1px solid gray;
+	border-radius:15px;
+	margin:10px 0px 0px 10px;
+	
+	
+}
+#aMain_right .aRight_title{
+	font-size:12px;margin-left:10px;
+	
+	
+}
+.clear{
+	clear:both;
+	/*위쪽 div의 float속성이 적용되었을때 빈공간 여백이 발생하면 아래쪽 div가 위로 올라가서 레이아웃이 깨지는데 그것을 막아줌
+	div간 css충돌 적용을 방지*/
+}
+#aMain_cont{
+	width:840px;height:480px;border:1px solid red; border-radius:15px;
+	margin:10px 0px 0px 10px;
+}
+#aMain_cont .aMainCont_title{
+	font-size:16px;
+	margin: 210px 0px 0px 320px;
+	
+}
+#aMain_footer{
+	width:840px;
+	height:74px;
+	border:1px solid red;
+	border-radius:15px;
+	margin: 10px 0px 0px 10px;
+	 
+}
+#aMain_footer .aMainFooter_title{
+	font-size:14px;
+	margin:27px 0px 0px 210px;
+}
+a:link{/*하이퍼링크 밑줄 지움*/
+	text-decoration:none;
+}
+a:active{/*클릭하는 순간*/
+	text-decoration:none;
+}
+a:visited{/*방문 했다면 */
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
+}
+

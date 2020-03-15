@@ -25,4 +25,10 @@ PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="r_del" parameterType="int">
 	delete from tbl_reply where rno=#{rno}
 	</delete>	
+	
+<!-- 댓글 번호로 부터 게시물 번호를 알아내자 -->
+	<select id="reply_bno" parameterType="int" resultType="int">
+	 select bno from tbl_reply where rno=#{rno}
+	</select>
+
 </mapper>

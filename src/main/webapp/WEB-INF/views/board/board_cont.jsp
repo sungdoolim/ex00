@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시물 내용보기</title>
-<script src="../resources/js/jquery.js"></script><!-- jquery써야지이잉 -->
+<script src="../resources/js/jquery.js"></script><!-- jquery써야지!, 현 폴더가 views인건가...? -->
 <style>
 #modDiv{/*댓글 ui 그리기*/
 	width:300px;
@@ -86,7 +86,8 @@
 </div>
 	
 <br><hr>
-[댓글 개수: 000 개]
+
+[댓글 개수: <b>${b.replycnt }</b> 개]
 <br>
 
 
@@ -138,6 +139,7 @@
 			success:function(result){//ajax로 받아오는 것이 성공되면 호출되는 콜백 함수, 받아온 자료는 result 매게변수에 저장
 				if(result=='success'){
 					alert('댓글이 등록되었습니다!');
+					location.reload();// 자바스크립트 location의 reload메서드는 새로고침 기능을 가짐 - 댓글 수 증가에 필요 - MODIV를 새로고침!
 					getAllList();
 				}
 			}
@@ -201,7 +203,9 @@
 			success:function(result){
 				if(result=="SUCCESS"){
 				alert('댓글 삭제에 성공했습니다!');
+				
 				$('#modDiv').hide('slow');
+				location.reload();
 				getAllList();}
 			}
 		});

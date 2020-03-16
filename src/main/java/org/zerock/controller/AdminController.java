@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.zerock.service.AdminService;
 import org.zerock.vo.AdminVO;
 
+import pwdconv.PwdChange;
+
 @Controller
 public class AdminController {
 
@@ -35,6 +37,12 @@ public class AdminController {
 		response.setContentType("text/html;charset=UTF-8");
 		//웹브라우저에 출력되는 문자/파일형태,언어코딩 타입 설정
 		PrintWriter out=response.getWriter();
+		
+		
+		ab.setAdmin_pwd(
+				PwdChange.getPassWordToXEMD5String(ab.getAdmin_pwd()));
+		
+		System.out.println("바뀐 비번 : !!!!    : "+ab.getAdmin_pwd());
 		AdminVO admin_pwd=this.adminService.adminLogin(ab.getAdmin_id());// 관리자 아이디를 기준으로 관리자 비번을 가져옴
 		if(admin_pwd==null) {
 			out.println("<script>");
@@ -56,8 +64,6 @@ public class AdminController {
 				return "redirect:/admin_main";//get방식으로 컨트롤러에 이동
 			}
 		}
-		
-		
 		
 		return null;
 		

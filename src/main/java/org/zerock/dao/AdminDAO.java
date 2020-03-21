@@ -6,4 +6,6 @@ public interface AdminDAO {
 
 	AdminVO adminLogin(String admin_id);
 
+	void adminRegister(AdminVO a);
+
 }

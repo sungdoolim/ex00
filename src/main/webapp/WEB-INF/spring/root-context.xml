@@ -42,7 +42,10 @@
 
 	</bean>
 	
+
 	
+<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+	<!--  업로드하기위한 추가와 server에서context.xml 수정해줘야함!!!! -->
 	
 	<!-- 트랜잭션 설정 -->
 	<bean id="transactionManager"

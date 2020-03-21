@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.zerock.service.AdminService;
 import org.zerock.vo.AdminVO;
 
+import pwdconv.PwdChange;
+
 @Controller
 public class AdminController {
 
@@ -45,7 +47,7 @@ public class AdminController {
 			
 		}
 		else {
-			if(!admin_pwd.getAdmin_pwd().equals(ab.getAdmin_pwd())) {
+			if(!admin_pwd.getAdmin_pwd().equals(PwdChange.getPassWordToXEMD5String(ab.getAdmin_pwd()))) {// 암호화된 비번 확인해오기 
 				out.println("<script>");
 				out.println("alert('관리자 비번이 다릅니다');");
 				out.println("history.back();");//페이지 뒤로!go(-1)과 같음

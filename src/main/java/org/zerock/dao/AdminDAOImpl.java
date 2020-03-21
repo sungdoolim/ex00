@@ -1,9 +1,12 @@
 package org.zerock.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.zerock.vo.AdminVO;
+import org.zerock.vo.BoardVO;
 
 import pwdconv.PwdChange;
 
@@ -21,12 +24,23 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-	public void adminRegister(AdminVO a) {
+	public void adminRegister(AdminVO a) {//Reguster Controller에서 온것
 		a.setAdmin_pwd(PwdChange.getPassWordToXEMD5String(a.getAdmin_pwd()));// 객체로 받아온게 아니네
 		sqlSession.insert("admin_register",a);
 		
 	}
-	
+	@Override
+	public void fileio(String name) {//Register Controller에서 온것
+		sqlSession.insert("fileupload",name);
+		
+	}
+
+	@Override
+	public List<String> selectallfile() {
+		// TODO Auto-generated method stub
+		
+		return sqlSession.selectList("fileselect");
+	}
 	
 	
 }

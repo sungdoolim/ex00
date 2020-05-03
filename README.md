@@ -4,16 +4,25 @@
 
 최종 기능 구현 소개
 1)회원 가입
+
 2)로그인
+
 3)게시판 글 쓰기
+
 4)댓글 달기
+
 5)파일 업로드 / 다운로드
+
 6)pw 암호화
 
 최종 사용 기술
 1)java-spring-framework
+
 2)ajax
+
 3)sql
+
+
 
 
 //- 공부 시작
@@ -21,7 +30,6 @@ home에서는 sqlplus day - 1234
 
 설정 :
 jdk : 1.8 - pom.xml에서 강제설정
-\\192.168.58.100
 
 처음 이클립스로 설치할때
  market -> sts -> spring tools 3 설치 -> 다 체크 후 confirm
@@ -30,63 +38,11 @@ epp221.exe=> 메모장 같은 개발툴
 
 이클립스에    spring legach project 만들꺼임
 
-오라클 :C:\oraclexe\app\oracle\product 11.2.0에 있음
-oracle_program에 있는 거 설치하면 되는 것임!!!
-
 오라클 접속 사용자 만들기 :
 [Oracle 11g] 오라클 유저 system, sys 암호 변경
 
-C:\>sqlplus "/as sysdba"
-
-
-SQL*Plus: Release 11.1.0.6.0 - Production on 토 12월 4 22:24:13 2010
-
-Copyright (c) 1982, 2007, Oracle.  All rights reserved.
-
-다음에 접속됨:
-Oracle Database 11g Enterprise Edition Release 11.1.0.6.0 - Production
-With the Partitioning, OLAP, Data Mining and Real Application Testing options
-
-SQL> SHOW USER
-USER은 "SYS"입니다
-SQL> ALTER USER SYS IDENTIFIED BY 원하는 암호; --굳이 할 필요 없다.
-
-사용자가 변경되었습니다.
-
-SQL> ALTER USER SYSTEM IDENTIFIED BY 원하는 암호;
-
-사용자가 변경되었습니다.
-
-SQL> SELECT USERNAME, PASSWORD FROM DBA_USERS; --굳이 할 필요 없다.
-
-
-집에 있는 sqlplus실행 하려면... : sorce/newfolder / sqlplus/ sqlplus.exe
-
 
 실 db저장 장소 C:\oraclexe\app\oracle\oradata\XE
-
-임의의 db저장소 만들기 이름=day
- create tablespace day
-  2  datafile 'C:\oraclexe\app\oracle\oradata\XE\day.dbf' size 200m;
-Tablespace created.
-
- create user day
-  2  identified by day
-  3  default tablespace day
-  4  quota unlimited on day;
-
-User created.
-
-SQL> grant connect,resource to day;
-
-Grant succeeded.
-
-SQL> conn day/day
-Connected.
-SQL> show user
-USER is "DAY"
-SQL>
-
 
  이클립스->openperspective->databaseconnection ->new ->oracle->next->
 new drive definition -> systemversion 11->jarlist->ojdbc14.jar -> 
@@ -94,15 +50,11 @@ editjarjip ->ojdbc67.jar찾아추가 ->
 username,password입력 ,sid에 xe입력 , host에 127.0.0.1 입력 (server라고 일단 적혀 있음) , save password체크 
 
 
-
-올려준pom다운 받고...얘가 프레임웤
-
-
 톰캣 설치 :
 tomcat9클릭 ->core의 zip클릭 -> 워크스페이스에 압축풀기 -> 그후 이클립스 
 ->openperspective -> spring -> server에 뭐시기 클릭 -> 아파치 -> 톰캣 9 -> 워크스페이스 브라우즈 -> finish
 
-포트번호 바꿔야함 :
+포트번호 바꿈 :
 
  --><Server port="8051" shutdown="SHUTDOWN">
 아파치 :8051
@@ -110,12 +62,6 @@ tomcat9클릭 ->core의 zip클릭 -> 워크스페이스에 압축풀기 -> 그�
     -->
     <Connector connectionTimeout="20000" port="8052" protocol="HTTP/1.1" redirectPort="8443"/>
 8052 
-
-잠깐 글꼴 바꾸기
-window->preference ->general->appearance->color fonts ->basic ->text font ->edit ->
- 그리고  workspace 텝->other->utf-8
-그리고 xml->xmlfile->systax coloring -> foregroudn 클릭 -> 색상 파란색, bold ->...
- 그냥 기타 설정이었음..
 
 서버구동 완료
 
@@ -138,12 +84,6 @@ file->new->spring legacy project-> 이름짓고->template의 spring mvc project�
 		</repository>
 	   </repositories>
 이거 추가!!!!
-
-그후
-커넥션 풀을 위한 라이브러리~~~끝 앞 까지 복사40~116줄
-폼 30줄에 붙여넣기
-
-204~209 복사 -> 197에 붙이기
 
 저장 -> 폴더 ->메이븐 ->업데이트!
 
@@ -175,11 +115,8 @@ src/test/java밑에 org.~controller에ㅐ서 new ->class만들기
 
 실행할때 run as junit test
 
-
-
 mybatis :
 xml 을 사용하여 sql문을 적용
-
 
 
 namespace추가 
@@ -187,15 +124,6 @@ src->main->webapp->web-INF->spring->root-context.xml:
 bean추가 하는 곳
 여기서 밑의 namespace텝 누르기 -> aop,beabs,context,jdbc,mybatis,tx - 6개체크
 ->source텝 가면 추가되어있음
-
-빈즈 안에 빈 태그 추가!
-20 ~ 28
-30~39 : mybatis
-src/main/resources밑에 mybatis-config.xml만들기
-
-
-의존성 주입..?
-servlet-context.xml : front 단
 
 
 --------------------------------------------------------------------------
@@ -218,9 +146,6 @@ sql 파일내에서...
 타임 = oracle_11 이름 : new oracle    db:xe   이거 해야 사용가능
 
 
-
-
-
 member.xml : 쿼리 두는 곳
 mybatis-config.xml : 경로에 따른 별칭 지정
 root-context.xml : 빈을 활용하는 의존성 주입 
@@ -236,11 +161,7 @@ dao(Model): 인터페이스가 필수
 service(고객의 추가 요구사항)	
     	\
  		Controller 	--	 view(webinf/view경로에 .jsp확장자로)
->>>>>>> fe4bf1febca38a44e393c0220971fa075081d1a5
 
-day6---------------------------------------------------------------
-
-<<<<<<< HEAD
 public String doC(@ModelAttribute("msg") String message) {
 		//@modelattribute("msg") : msg파라미터 이름에 인자값을 문자열로 전달한다
 		
@@ -283,10 +204,6 @@ insert into tbl_member values(#{userid},#{userpw},#{username},#{email},sysdate,s
 select 였다면 그냥 결과를 return 
 
 
-
-=======
-day6---------------------------------------------------------------
-
 cannot find class :  분명 있는데 없다고 뜨는 경우 :
  package explorer에서는 있지만 없다는 경우 임 -> 실제 경로로 들어가 봐야함
  실 경로 :
@@ -319,8 +236,6 @@ downliad the compressed ,production jquery 3.4.1
 ->이거 exploer에서 해야함
 이름을 jquery.js라고 바꾸자 -> 만든폴더에 넣기
 
-0303-------------------------------------------------------------
-0304-------------------------------------------------------------
 인자값 boardVO b   ,  int bno 줬을때 값이 들어가는데...
 생략된것 : @ModelAttribute BoardVO b   -  model에서 불러와서 저장하는 듯
         @RequestParam("bno") int bno
@@ -334,18 +249,11 @@ namespace.id로 갈수 있음!!
 return this.sqlSession.selectOne("Board.b_count");
 		==selectOne("b_count");
 		
-		
-오늘꺼 충돌 쫌 날듯....
-0305------------------------------------------------------------
-
-0306-------------------------------------------------------------
 rest ?{
 jsp파일을 만들지않고 json객체나 string으로 받아와서 사용
 json : 키:값
 
 }
-
-0307-------------------------------------------------------------
 
 ajax : 불필요한 화면 전환이 없다
 
@@ -380,9 +288,6 @@ put에 두고
 delete 선택
 url =http://127.0.0.1:8052/controller/replies/2
 
-
-0308------------------------------------------------------
-
 ajax 통신
 	$('#replyAddBtn').on('click',function(){
 		var replyer =$('#newReplyWriter').val();//value를 가져오는 것
@@ -411,8 +316,7 @@ ajax 통신
 		});		
 	});
 	
-	
-aop : - db랑 연동하는 부분인듯...?
+
 aspect oriented programming: 데이터 일관성을 유지
 
 37   12과목 +1 
@@ -422,15 +326,6 @@ aspect oriented programming: 데이터 일관성을 유지
 
 트랜잭션 :함수내에 모든 동작이 성공했을때만 함수 내용 반영!
 여러 sql문을 실행하는데 하나라도 틀리면 모든 것 rollback
-
-
-
-
-0314------------------------------------------------------
-
-
-0315 종강--------------------------------------------------
-
 
 
 

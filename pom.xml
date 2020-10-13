@@ -261,7 +261,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version><!-- 4.12로 바꾼것! -->
+			<version>4.13.1</version><!-- 4.12로 바꾼것! -->
 			<scope>test</scope>
 		</dependency>        
 	</dependencies>
